@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Projekt Ekstraklasa</title>
+
+  <style>
+    body {
+      margin: 0;
+      background-color: #0F172A;
+      display: flex;
+      flex-direction: row;
+    }
+
+    #leftPanelContainer {
+      margin: 10px;
+    }
+
+    #rightSide {
+      margin: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+
+  <!-- correct script loading -->
+  <script src="engine.js"></script>
+</head>
+
+<body>
+
+  <!-- LEFT PANEL -->
+  <div id="leftPanelContainer"></div>
+
+  <!-- RIGHT SIDE (button) -->
+  <div id="rightSide">
+    <button onclick="runUpdates()">Update Table + Form</button>
+  </div>
+
+  <!-- load leftPanel.html -->
+  <script>
+    fetch('leftPanel.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('leftPanelContainer').innerHTML = html;
+      });
+
+    // button function calling BOTH of your functions
+    function runUpdates() {
+      UpdateDashboardTable();
+      UpdateFormDisplay();
+    }
+  </script>
+
+</body>
+</html>
