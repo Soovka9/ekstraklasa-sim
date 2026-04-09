@@ -1,3 +1,26 @@
+function fetchAllJSONs() {
+  const jsonFiles = {
+    currentEkstraklasaSorted: 'currentEkstraklasaSorted.json',
+    currentEkstraklasaTabela: 'currentEkstraklasaTabela.json',
+    currentForm: 'currentForm.json',
+    currentTeams: 'currentTeams.json',
+    defaultEkstraklasaTabela: 'defaultEkstraklasaTabela.json',
+    defaultForm: 'defaultForm.json',
+    defaultTeams: 'defaultTeams.json'
+  };
+
+  const promises = Object.entries(jsonFiles).map(([key, path]) =>
+    fetch(path)
+      .then(response => response.json())
+      .then(data => {
+        window[key] = data;
+      })
+      .catch(err => console.error(`Failed to fetch ${path}:`, err))
+  );
+
+  return Promise.all(promises);
+}
+
 function createLeftPanel() {
 
   const container = document.getElementById('leftPanelContainer');
@@ -324,16 +347,15 @@ function UpdateDashboardTable() {
 }
 
 function UpdateFormDisplay() {
-
   for (let i = 0; i < 18; i++) {
 
-    const row = i + 1;
+    const rowIndex = i; // match createLeftPanel row.dataset.row
 
     // 1. get team name from visual table (column 2 -> data-col="1")
-    const nameCell = document.querySelector(`[data-row="${row}"][data-col="1"]`);
+    const nameCell = document.querySelector(`[data-row="${rowIndex}"][data-col="1"]`);
     if (!nameCell) continue;
 
-    const teamName = nameCell.textContent;
+    const teamName = nameCell.textContent.trim(); // remove extra spaces
 
     // 2. find matching team in currentForm
     const teamForm = currentForm.find(t => t.name === teamName);
@@ -342,12 +364,14 @@ function UpdateFormDisplay() {
     // 3. get last5 (and reverse for display)
     const formArray = [...teamForm.last5].reverse();
 
-    // 4. get circles in this row
-    const circles = document.querySelectorAll(`[data-row="${row}"][data-circle]`);
+    // 4. get circles inside last column of this row
+    const lastCol = document.querySelector(`[data-row="${rowIndex}"][data-col="8"]`); // last column
+    if (!lastCol) continue;
+
+    const circles = lastCol.querySelectorAll('[data-circle]');
 
     // 5. apply colors
     for (let j = 0; j < 5; j++) {
-
       const result = formArray[j];
       const circle = circles[j];
       if (!circle) continue;
@@ -368,3 +392,9 @@ function UpdateFormDisplay() {
     }
   }
 }
+const currentEkstraklasaSorted = [
+{ name: "Lech", RM: 1, Z: 1, R: 0, P: 0, BZ: 2, BS: 0, PKT: 3}
+]
+const currentForm = [
+{ name: "Lech", last5: ["W", "L", "P", "N", "W"]}
+]
