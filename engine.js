@@ -392,9 +392,3 @@ function UpdateFormDisplay() {
     }
   }
 }
-const currentEkstraklasaSorted = [
-{ name: "Lech", RM: 1, Z: 1, R: 0, P: 0, BZ: 2, BS: 0, PKT: 3}
-]
-const currentForm = [
-{ name: "Lech", last5: ["W", "L", "P", "N", "W"]}
-]
