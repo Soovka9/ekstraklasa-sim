@@ -1,3 +1,90 @@
+function createLeftPanel() {
+
+  const container = document.getElementById('leftPanelContainer');
+
+  const leftPanel = document.createElement('div');
+  leftPanel.id  = "leftPanel";
+  leftPanel.style.backgroundColor = "#0F172A";
+  leftPanel.style.width = "20.27cm";
+  leftPanel.style.height = "19cm";
+  leftPanel.style.position = "relative";
+
+  container.appendChild(leftPanel);
+
+  const rowData = [
+    {count:1, color:'#071323'},
+    {count:2, color:'#3CF4F4'},
+    {count:2, color:'#D9D9D9'},
+    {count:11, color:'#071323'},
+    {count:3, color:'#C00000'}
+  ];
+
+  const widths = [0.95, 6.25, 1.5, 1.3, 1.3, 1.3, 1.85, 1.65, 2.8];
+  const rowHeight = 0.7;
+  const circleRadius = 0.2;
+
+  function cmToPx(cm) {
+    return cm * 37.8;
+  }
+
+  let currentTop = 0;
+  let rowIndex = 0;
+
+  rowData.forEach(group => {
+    for(let i=0; i<group.count; i++){
+
+      const row = document.createElement('div');
+      row.style.position = 'absolute';
+      row.style.top = cmToPx(currentTop) + 'px';
+      row.style.left = '0px';
+      row.style.height = cmToPx(rowHeight) + 'px';
+      row.style.width = '100%';
+      row.style.display = 'flex';
+      row.dataset.row = rowIndex;
+
+      widths.forEach((w, colIndex) => {
+
+        const rect = document.createElement('div');
+        rect.style.width = cmToPx(w) + 'px';
+        rect.style.height = '100%';
+        rect.style.backgroundColor = (colIndex===widths.length-1 && rowIndex>0) ? '#071323' : group.color;
+        rect.style.position = 'relative';
+	rect.style.border='1px solid #223F59';
+
+        rect.dataset.row = rowIndex;
+        rect.dataset.col = colIndex;
+
+        if(colIndex === widths.length-1 && rowIndex>0){
+
+          rect.style.display = 'flex';
+          rect.style.alignItems = 'center';
+          rect.style.justifyContent = 'space-evenly';
+
+          for(let c=0; c<5; c++){
+
+            const circle = document.createElement('div');
+            circle.style.width = cmToPx(circleRadius*2) + 'px';
+            circle.style.height = cmToPx(circleRadius*2) + 'px';
+            circle.style.borderRadius = '50%';
+            circle.style.backgroundColor = '#FFF';
+
+            circle.dataset.row = rowIndex;
+            circle.dataset.circle  = c;
+
+            rect.appendChild(circle);
+          }
+        }
+
+        row.appendChild(rect);
+      });
+
+      leftPanel.appendChild(row);
+      currentTop += rowHeight;
+      rowIndex++;
+    }
+  });
+}
+
 function getAttack(teamName) {
   const team = teamsData.find(t => t.name === teamName);
   return team ? team.attack : 1;

@@ -42,11 +42,9 @@
 
   <!-- load leftPanel.html -->
   <script>
-    fetch('leftPanel.html')
-      .then(r => r.text())
-      .then(html => {
-        document.getElementById('leftPanelContainer').innerHTML = html;
-      });
+    window.onload = function(){
+	createLeftPanel();
+    }
 
     // button function calling BOTH of your functions
     function runUpdates() {

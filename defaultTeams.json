@@ -1,0 +1,20 @@
+[
+  { "name": "Arka Gdynia", "attack": 0.95, "defense": 0.88, "expected": 1, "league": "Ekstraklasa" },
+  { "name": "Bruk-Bet Termalica Nieciecza", "attack": 0.96, "defense": 0.81, "expected": 1, "league": "Ekstraklasa" },
+  { "name": "Cracovia Kraków", "attack": 1.01, "defense": 1.02, "expected": 1, "league": "Ekstraklasa" },
+  { "name": "GKS Katowice", "attack": 1.02, "defense": 1.01, "expected": 1, "league": "Ekstraklasa" },
+  { "name": "Górnik Zabrze", "attack": 1.05, "defense": 1.05, "expected": 1, "league": "Ekstraklasa" },
+  { "name": "Jagiellonia Białystok", "attack": 1.12, "defense": 1.02, "expected": 1, "league": "Ekstraklasa" },
+  { "name": "Korona Kielce", "attack": 0.95, "defense": 1.1, "expected": 1, "league": "Ekstraklasa" },
+  { "name": "Lech Poznań", "attack": 1.2, "defense": 1.04, "expected": 1, "league": "Ekstraklasa" },
+  { "name": "Lechia Gdańsk", "attack": 1.15, "defense": 0.83, "expected": 1, "league": "Ekstraklasa" },
+  { "name": "Legia Warszawa", "attack": 1.05, "defense": 1.0, "expected": 1, "league": "Ekstraklasa" },
+  { "name": "Motor Lublin", "attack": 0.98, "defense": 0.95, "expected": 1, "league": "Ekstraklasa" },
+  { "name": "Piast Gliwice", "attack": 0.95, "defense": 1.18, "expected": 1, "league": "Ekstraklasa" },
+  { "name": "Pogoń Szczecin", "attack": 1.12, "defense": 1.1, "expected": 1, "league": "Ekstraklasa" },
+  { "name": "Radomiak Radom", "attack": 1.02, "defense": 0.95, "expected": 1, "league": "Ekstraklasa" },
+  { "name": "Raków Częstochowa", "attack": 1.14, "defense": 1.05, "expected": 1, "league": "Ekstraklasa" },
+  { "name": "Widzew Łódź", "attack": 0.95, "defense": 1.1, "expected": 1, "league": "Ekstraklasa" },
+  { "name": "Wisła Płock", "attack": 1.00, "defense": 1.12, "expected": 1, "league": "Ekstraklasa" },
+  { "name": "Zagłębie Lubin", "attack": 1.05, "defense": 1.00, "expected": 1, "league": "Ekstraklasa" }
+]
